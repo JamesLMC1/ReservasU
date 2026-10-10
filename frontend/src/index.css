@@ -1,0 +1,208 @@
+:root {
+  --primario: #1d4e89;
+  --primario-oscuro: #163b68;
+  --fondo: #f4f6fa;
+  --tarjeta: #ffffff;
+  --texto: #1f2933;
+  --suave: #5b6b7c;
+  --borde: #d9e0ea;
+  --error: #b42318;
+  --exito: #067647;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--texto);
+  background: var(--fondo);
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.75rem;
+}
+
+a {
+  color: var(--primario);
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--primario);
+  color: #fff;
+}
+
+.cabecera a {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.cabecera a.active {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.marca {
+  font-weight: 700;
+}
+
+.menu {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+.sesion {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.contenido {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  align-items: end;
+}
+
+.formulario h2 {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--suave);
+}
+
+input,
+select {
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  color: var(--texto);
+  background: #fff;
+}
+
+button {
+  font: inherit;
+  padding: 0.5rem 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--primario);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--primario-oscuro);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+button.secundario {
+  background: #fff;
+  color: var(--primario);
+  border: 1px solid var(--primario);
+}
+
+button.secundario:hover:not(:disabled) {
+  background: #eef3fa;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabla th,
+.tabla td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--borde);
+  font-size: 0.92rem;
+  vertical-align: middle;
+}
+
+.tabla th {
+  background: #eef2f8;
+  color: var(--suave);
+  font-weight: 600;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.acciones input {
+  min-width: 160px;
+}
+
+.error {
+  color: var(--error);
+  font-weight: 600;
+}
+
+.aviso {
+  color: var(--exito);
+  font-weight: 600;
+}
+
+.login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.login .tarjeta {
+  width: min(380px, 92vw);
+  display: grid;
+  gap: 0.9rem;
+}

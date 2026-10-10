@@ -1,0 +1,25 @@
+# Secretos y configuración local
+backend/.env
+.env
+*.local
+
+# Java / Maven
+backend/target/
+*.class
+
+# Node / Vite
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+
+# Editores
+.idea/
+.vscode/
+*.suo
+*.sw?
+.DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
