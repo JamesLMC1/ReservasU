@@ -215,6 +215,14 @@ class ReservaServiceTest {
     }
 
     @Test
+    @DisplayName("Un solicitante no puede ver la reserva de otro usuario")
+    void solicitanteNoVeReservaAjena() {
+        when(reservas.findById(10L)).thenReturn(Optional.of(reserva(10L, usuario(5L, Rol.SOLICITANTE), espacio(1L), EstadoReserva.PENDIENTE)));
+
+        assertEstado(HttpStatus.FORBIDDEN, () -> servicio.obtener(solicitante, 10L));
+    }
+
+    @Test
     @DisplayName("El propietario cancela su reserva activa")
     void propietarioCancela() {
         Usuario dueno = usuario(2L, Rol.SOLICITANTE);
@@ -225,6 +233,16 @@ class ReservaServiceTest {
         ReservaDto.Respuesta respuesta = servicio.cancelar(solicitante, 10L);
 
         assertEquals(EstadoReserva.CANCELADA, respuesta.estado());
+    }
+
+    @Test
+    @DisplayName("No se puede cancelar una reserva ya cerrada")
+    void noSePuedeCancelarReservaCerrada() {
+        Usuario dueno = usuario(2L, Rol.SOLICITANTE);
+        Espacio espacio = espacio(1L);
+        cargarParaDecision(reserva(10L, dueno, espacio, EstadoReserva.RECHAZADA), espacio);
+
+        assertEstado(HttpStatus.BAD_REQUEST, () -> servicio.cancelar(solicitante, 10L));
     }
 
     @Test

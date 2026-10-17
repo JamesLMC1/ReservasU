@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: reservas
+  datasource:
+    url: ${TEST_DB_URL:jdbc:postgresql://localhost:5432/reservas_test}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:secreto-de-pruebas-con-al-menos-32-bytes-ok!!}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:30}
+  reservas:
+    zona-horaria: ${APP_TIMEZONE:Europe/Madrid}
+  admin:
+    correo: ${ADMIN_CORREO:}
+    contrasena: ${ADMIN_CONTRASENA:}
+  cors:
+    origen: ${CORS_ORIGIN:http://localhost:5173}
