@@ -3,9 +3,8 @@ import { peticion } from '../api/cliente'
 import type { EntradaHistorial, Espacio, EstadoReserva, Reserva } from '../api/tipos'
 import { useAuth } from '../auth/AuthContext'
 import { ETIQUETA_ESTADO, formatearFechaHora } from '../etiquetas'
-import { aFechaHoraLocal, horasDelDia, validarSolicitud } from '../reservas/validaciones'
+import { aFechaHoraLocal, validarSolicitud } from '../reservas/validaciones'
 
-const HORAS = horasDelDia()
 const ESTADOS_ACTIVOS: EstadoReserva[] = ['PENDIENTE', 'APROBADA']
 
 export function ReservasPage() {
@@ -108,15 +107,11 @@ export function ReservasPage() {
         </label>
         <label>
           Hora de inicio
-          <select value={horaInicio} onChange={(e) => setHoraInicio(e.target.value)}>
-            {HORAS.map((hora) => <option key={hora} value={hora}>{hora}</option>)}
-          </select>
+          <input type="time" step="1800" value={horaInicio} onChange={(e) => setHoraInicio(e.target.value)} />
         </label>
         <label>
           Hora de fin
-          <select value={horaFin} onChange={(e) => setHoraFin(e.target.value)}>
-            {HORAS.map((hora) => <option key={hora} value={hora}>{hora}</option>)}
-          </select>
+          <input type="time" step="1800" value={horaFin} onChange={(e) => setHoraFin(e.target.value)} />
         </label>
         <button type="submit">Solicitar</button>
       </form>
